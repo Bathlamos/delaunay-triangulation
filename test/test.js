@@ -44,6 +44,15 @@ t('inCircle infinite circle', function (t) {
     t.end();
 });
 
+t('inCircle close point outside', function (t) {
+    var triangulator = new delaunay();
+    t.same(triangulator.inCircle({x: 455.92018420781744, y: 248.96081128188553},
+        {x: 342.30806318880326, y: 338.21910826748257},
+        {x: 309.54136543023935, y: 164.19953352250644},
+        {x: 334.260775171976, y: 342.3228053742814}), false);
+    t.end();
+});
+
 t('inCircle very large circle', function (t) {
     var triangulator = new delaunay();
     t.same(triangulator.inCircle({x:-999999, y:1}, {x:-1, y:0},{x:1, y:0}, {x:1, y:1}), true);
@@ -53,6 +62,10 @@ t('inCircle very large circle', function (t) {
 t('inCircle on circle\'s edge', function (t) {
     var triangulator = new delaunay();
     t.same(triangulator.inCircle({x:0, y:1}, {x:-1, y:0},{x:1, y:0}, {x:-1, y:0}), false);
+    t.same(triangulator.inCircle({x: 309.54136543023935, y:164.19953352250644},
+        {x: 455.92018420781744, y: 248.96081128188553},
+        {x: 334.260775171976, y: 342.3228053742814},
+        {x: 455.92018420781744, y: 248.96081128188553}), false);
     t.end();
 });
 

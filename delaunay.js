@@ -32,11 +32,14 @@
                 return a.x - b.x;
             });
 
-            var last = null;
-            for(var i = 0; i < this._points.length; i++) {
-                if(last && last.x === this._points[i].x && last.y === this._points[i].y)
-                    this._points.splice(i, 1);
-            }
+            //var last = null;
+            //for(var i = 0; i < this._points.length; i++) {
+            //    if(last && last.x === this._points[i].x && last.y === this._points[i].y) {
+            //        this._points.splice(i, 1);
+            //        console.log("Removed duplicate")
+            //    }
+            //    last = this._points[i];
+            //}
 
             var quadEdge = delaunay(this._points).le;
 
@@ -71,8 +74,20 @@
              | c.x  c.y  1 |
      */
     function ccw(a, b, c) {
-        return a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y) > 0;
+        return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x) > 0;
     }
+
+    //function ccw(a, b, c) {
+    //    return a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y) > 0;
+    //}
+
+    //function ccw(a, b, c) {
+    //    var result = new window.Big(a.x);
+    //    result = result.times(new window.Big(b.y).minus(c.y));
+    //    result = result.plus(new window.Big(c.y).minus(a.y).times(b.x));
+    //    result = result.plus(new window.Big(a.y).minus(b.y).times(c.x));
+    //    return result.gt(0);
+    //}
 
     function rightOf(x, e) {
         return ccw(x, e.dest, e.orig);
@@ -95,7 +110,7 @@
      * Return true is d is in the circumcircle of a, b, c
      */
     function inCircle(a, b, c, d){
-        var sa = a.x * a.x + a.y * a.y,
+        var sa = a.x * a.x  + a.y * a.y,
             sb = b.x * b.x + b.y * b.y,
             sc = c.x * c.x + c.y * c.y,
             sd = d.x * d.x + d.y * d.y;
@@ -107,11 +122,40 @@
             d5 = c.x * sd - sc * d.x,
             d6 = c.x * d.y - c.y * d.x;
 
+        var res = a.x * (b.y * d1 - sb * d2 + d3)
+            - a.y * (b.x * d1 - sb * d4 + d5)
+            + sa * (b.x * d2 - b.y * d4 + d6)
+            - b.x * d3 + b.y * d5 - sb * d6
+        if(res === Number.NaN || res === Number.NEGATIVE_INFINITY || res === Number.POSITIVE_INFINITY)
+            console.log("Overflow")
+
         return a.x * (b.y * d1 - sb * d2 + d3)
             - a.y * (b.x * d1 - sb * d4 + d5)
             + sa * (b.x * d2 - b.y * d4 + d6)
-            - b.x * d3 + b.y * d5 - sb * d6 > 0;
+            - b.x * d3 + b.y * d5 - sb * d6 > 1e-2; // We have an issue here with number accuracy
     }
+
+    //function inCircle(a, b, c, d){
+    //    var sa = new window.Big(a.x).times(a.x).plus(new window.Big(a.y).times(a.y)),
+    //        sb = new window.Big(b.x).times(b.x).plus(new window.Big(b.y).times(b.y)),
+    //        sc = new window.Big(c.x).times(c.x).plus(new window.Big(c.y).times(c.y)),
+    //        sd = new window.Big(d.x).times(d.x).plus(new window.Big(d.y).times(d.y));
+    //
+    //    var d1 = sc.minus(sd),
+    //        d2 = new window.Big(c.y).minus(d.y),
+    //        d3 = sd.times(c.y).minus(sc.times(d.y)),
+    //        d4 = new window.Big(c.x).minus(d.x),
+    //        d5 = sd.times(c.x).minus(sc.times(d.x)),
+    //        d6 = new window.Big(c.x).times(d.y).minus(new window.Big(c.y).times(d.x));
+    //
+    //    var result = new window.Big(a.x);
+    //    result = result.times(d1.times(b.y).minus(sb.times(d2)).plus(d3));
+    //    result = result.minus(d1.times(b.x).minus(sb.times(d4)).plus(d5).times(a.y));
+    //    result = result.plus(d2.times(b.x).minus(d4.times(b.y)).plus(d6).times(sa));
+    //    result = result.minus(d3.times(b.x)).plus(d5.times(b.y)).minus(sb.times(d6));
+    //
+    //    return result.gt(0);
+    //}
 
     function QuadEdge(onext, rot, orig) {
         this.onext = onext; // QuadEdge
@@ -128,8 +172,7 @@
         get dprev(){return this.rotSym.onext.rotSym;},
         get lnext(){return this.rotSym.onext.rot;},
         get lprev(){return this.onext.sym;},
-        get rprev(){return this.sym.onext;},
-        toString: function(){return "(" + this.orig.x + ", " + this.orig.y +")x(" + this.sym.orig.x + ", " + this.sym.orig.y +")";}
+        get rprev(){return this.sym.onext;}
     };
 
     function makeEdge(orig, dest) {

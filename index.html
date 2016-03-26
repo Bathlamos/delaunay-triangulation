@@ -3,6 +3,7 @@
 
 <head>
     <script type="application/javascript" src="delaunay.js"></script>
+    <script type="application/javascript" src="node_modules/big.js/big.min.js"></script>
 
     <script>
         window.onload = function() {
@@ -13,10 +14,8 @@
             var ctx = canvas.getContext("2d");
 
             var pts = [];
-            for (var i = /*Math.floor(Math.random() * 100 + 100)*/ 1000; i >= 0; i--) {
-                pts.push({x: 5 + Math.ceil(Math.random() * 490), y: 5 + Math.ceil(Math.random() * 490)});
-                console.log(pts[pts.length - 1])
-            }
+            for (var i = /*Math.floor(Math.random() * 100 + 100)*/ 1000; i >= 0; i--)
+                pts.push({x: 5 + Math.random() * 490, y: 5 + Math.random() * 490});
 
 //            pts.push({x: 288.7020377011756, y: 459.0411393167253});
 //            pts.push({x: 320.00229927254173, y: 133.09176145296345});
@@ -40,10 +39,12 @@
             for (i = 0; i < pts.length; i++)
                 ctx.fillRect(pts[i].x - 2, 500 - 2 -  pts[i].y, 5, 5);
 
+            var start = new Date().getTime();
             var d = new Delaunay(pts);
             var triangles = d.triangulate();
+            var end = new Date().getTime();
 
-            console.log(triangles);
+            console.log("In time: " + (end - start) / 1000.0)
 
             for (i = 0; i < triangles.length; i++) {
                 ctx.beginPath();
