@@ -3,62 +3,161 @@
 
 <head>
     <script type="application/javascript" src="delaunay.js"></script>
-    <script type="application/javascript" src="node_modules/big.js/big.min.js"></script>
 
     <script>
         window.onload = function() {
             var canvas = document.createElement('canvas');
-            canvas.width = 500;
-            canvas.height = 500;
+            canvas.width = 2000;
+            canvas.height = 1000;
             document.body.appendChild(canvas);
             var ctx = canvas.getContext("2d");
 
             var pts = [];
-            for (var i = /*Math.floor(Math.random() * 100 + 100)*/ 1000; i >= 0; i--)
-                pts.push({x: 5 + Math.random() * 490, y: 5 + Math.random() * 490});
+//            for (var i = 1000; i >= 0; i--)
+//                pts.push([5 + Math.random() * 1490, 5 + Math.random() * 990]);
 
-//            pts.push({x: 288.7020377011756, y: 459.0411393167253});
-//            pts.push({x: 320.00229927254173, y: 133.09176145296345});
-//            pts.push({x: 334.260775171976, y: 342.3228053742814});
-//            pts.push({x: 455.92018420781744, y: 248.96081128188553});
-//            pts.push({x: 342.30806318880326, y: 338.21910826748257});
-//            pts.push({x: 309.54136543023935, y: 164.19953352250644});
-
-//            pts.push({x: 10, y: 400});
-//            pts.push({x: 60, y:250});
-//            pts.push({x: 180, y:30});
-//            pts.push({x: 70, y:350});
-//            pts.push({x: 450, y:490});
-//            pts.push({x: 450, y:12});
-//            pts.push({x: 300, y:75});
-//            pts.push({x: 45, y:257});
-//            pts.push({x: 153, y:453});
-//            pts.push({x: 250, y:250});
-
-            ctx.fillStyle="#000";
-            for (i = 0; i < pts.length; i++)
-                ctx.fillRect(pts[i].x - 2, 500 - 2 -  pts[i].y, 5, 5);
+            pts.push([1, 1]);
+            pts.push([1, 64]);
+            pts.push([2, 1]);
+            pts.push([2, 64]);
+            pts.push([3, 1]);
+            pts.push([3, 64]);
+            pts.push([4, 1]);
+            pts.push([4, 64]);
+            pts.push([5, 1]);
+            pts.push([5, 64]);
+            pts.push([6, 1]);
+            pts.push([6, 64]);
+            pts.push([7, 1]);
+            pts.push([7, 64]);
+            pts.push([8, 1]);
+            pts.push([8, 64]);
+            pts.push([9, 1]);
+            pts.push([9, 64]);
+            pts.push([10, 1]);
+            pts.push([10, 64]);
+            pts.push([11, 1]);
+            pts.push([11, 64]);
+            pts.push([12, 1]);
+            pts.push([12, 64]);
+            pts.push([13, 1]);
+            pts.push([13, 64]);
+            pts.push([14, 1]);
+            pts.push([14, 64]);
+            pts.push([15, 1]);
+            pts.push([15, 64]);
+            pts.push([16, 1]);
+            pts.push([16, 64]);
+            pts.push([17, 1]);
+            pts.push([17, 64]);
+            pts.push([18, 1]);
+            pts.push([18, 64]);
+            pts.push([19, 1]);
+            pts.push([19, 64]);
+            pts.push([20, 1]);
+            pts.push([20, 64]);
+            pts.push([21, 1]);
+            pts.push([21, 64]);
+            pts.push([22, 1]);
+            pts.push([22, 64]);
+            pts.push([23, 1]);
+            pts.push([23, 64]);
+            pts.push([24, 1]);
+            pts.push([24, 64]);
+            pts.push([25, 1]);
+            pts.push([25, 64]);
+            pts.push([26, 1]);
+            pts.push([26, 64]);
+            pts.push([27, 1]);
+            pts.push([27, 64]);
+            pts.push([28, 1]);
+            pts.push([28, 64]);
+            pts.push([29, 1]);
+            pts.push([29, 64]);
+            pts.push([30, 1]);
+            pts.push([30, 64]);
+            pts.push([31, 1]);
+            pts.push([31, 64]);
+            pts.push([32, 1]);
+            pts.push([32, 64]);
+            pts.push([33, 1]);
+            pts.push([33, 64]);
+            pts.push([34, 1]);
+            pts.push([34, 64]);
+            pts.push([35, 1]);
+            pts.push([35, 64]);
+            pts.push([36, 1]);
+            pts.push([36, 64]);
+            pts.push([37, 1]);
+            pts.push([37, 64]);
+            pts.push([38, 1]);
+            pts.push([38, 64]);
+            pts.push([39, 1]);
+            pts.push([39, 64]);
+            pts.push([40, 1]);
+            pts.push([40, 64]);
+            pts.push([41, 1]);
+            pts.push([41, 64]);
+            pts.push([42, 1]);
+            pts.push([42, 64]);
+            pts.push([43, 1]);
+            pts.push([43, 64]);
+            pts.push([44, 1]);
+            pts.push([44, 64]);
+            pts.push([45, 1]);
+            pts.push([45, 64]);
+            pts.push([46, 1]);
+            pts.push([46, 64]);
+            pts.push([47, 1]);
+            pts.push([47, 64]);
+            pts.push([48, 1]);
+            pts.push([48, 64]);
+            pts.push([49, 1]);
+            pts.push([49, 64]);
+            pts.push([50, 1]);
+            pts.push([50, 64]);
+            pts.push([51, 1]);
+            pts.push([51, 64]);
+            pts.push([52, 1]);
+            pts.push([52, 64]);
+            pts.push([53, 1]);
+            pts.push([53, 64]);
+            pts.push([54, 1]);
+            pts.push([54, 64]);
+            pts.push([55, 1]);
+            pts.push([55, 64]);
+            pts.push([56, 1]);
+            pts.push([56, 64]);
+            pts.push([57, 1]);
+            pts.push([57, 64]);
+            pts.push([58, 1]);
+            pts.push([58, 64]);
+            pts.push([59, 1]);
+            pts.push([59, 64]);
+            pts.push([60, 1]);
+            pts.push([60, 64]);
+            pts.push([61, 1]);
+            pts.push([61, 64]);
+            pts.push([62, 1]);
+            pts.push([62, 64]);
+            pts.push([63, 1]);
+            pts.push([63, 64]);
+            pts.push([64, 1]);
+            pts.push([64, 64]);
 
             var start = new Date().getTime();
             var d = new Delaunay(pts);
-            var triangles = d.triangulate();
+            var faces = d.triangulate();
             var end = new Date().getTime();
 
-            console.log("In time: " + (end - start) / 1000.0)
-
-            for (i = 0; i < triangles.length; i++) {
-                ctx.beginPath();
-                ctx.moveTo(triangles[i].orig.x, 500 - triangles[i].orig.y);
-                ctx.lineTo(triangles[i].sym.orig.x, 500 - triangles[i].sym.orig.y);
-                ctx.stroke();
-
-//                ctx.strokeStyle="#ccc";
-//                var circumcircle = d._getCircumcircle(pts[triangles[i][0]], pts[triangles[i][1]], pts[triangles[i][2]]);
-//                ctx.beginPath();
-//                ctx.arc(circumcircle.center[0],500-circumcircle.center[1],Math.sqrt(circumcircle.radiusSquared),0,2*Math.PI);
-//                ctx.stroke();
-//                ctx.strokeStyle="#000";
+            ctx.beginPath();
+            for (i = 0; i < faces.length; i += 3) {
+                ctx.moveTo(faces[i][0] * 10, 1000 - faces[i][1] * 10);
+                ctx.lineTo(faces[i + 1][0] * 10, 1000 - faces[i + 1][1] * 10);
+                ctx.lineTo(faces[i + 2][0] * 10, 1000 - faces[i + 2][1] * 10);
+                ctx.lineTo(faces[i][0] * 10, 1000 - faces[i][1] * 10);
             }
+            ctx.stroke();
 
         }
 

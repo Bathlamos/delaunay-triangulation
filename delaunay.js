@@ -1,6 +1,6 @@
 /*
  (c) 2016, Philippe Legault
-An implementation of Dwyer's O(nlogn) Delaunay triangulation algorithm
+An implementation of Guibas & Stolfi's O(nlogn) Delaunay triangulation algorithm
  https://github.com/Bathlamos/delaunay-triangulation
 
  */
@@ -19,10 +19,8 @@ An implementation of Dwyer's O(nlogn) Delaunay triangulation algorithm
 
         triangulate: function() {
             var pts = this.points;
-            if(pts.length < 2)
-                return {};
 
-            // This whole sorting gig is terrible and O(nlogn)
+            // Initial sorting of the points
             pts.sort(function(a,b) {
                 if(a[0] === b[0])
                     return a[1] - b[1];
@@ -34,21 +32,34 @@ An implementation of Dwyer's O(nlogn) Delaunay triangulation algorithm
                 if(pts[i][0] === pts[i - 1][0] && pts[i][1] === pts[i - 1][1])
                     pts.splice(i, 1); // Costly operation, but there shouldn't be that many duplicates
 
+            if(pts.length < 2)
+                return {};
 
             var quadEdge = delaunay(pts).le;
 
             //All edges marked false
-            var edges = [];
+            var faces = [];
             var queueIndex = 0;
             var queue = [quadEdge];
+
+            // Mark all outer edges as visited
+            while(leftOf(quadEdge.onext.dest, quadEdge))
+                quadEdge = quadEdge.onext;
+
+            var curr = quadEdge;
+            do {
+                queue.push(curr.sym);
+                curr.mark = true;
+                curr = curr.lnext;
+            } while(curr !== quadEdge);
 
             do {
                 var edge = queue[queueIndex++];
                 if(!edge.mark) {
                     // Stores the edges for a visited triangle. Also pushes sym (neighbour) edges on stack to visit later.
-                    var curr = edge;
+                    curr = edge;
                     do {
-                        edges.push(curr);
+                        faces.push(curr.orig);
                         if (!curr.sym.mark)
                             queue.push(curr.sym);
 
@@ -58,7 +69,9 @@ An implementation of Dwyer's O(nlogn) Delaunay triangulation algorithm
                 }
             } while(queueIndex < queue.length);
 
-            return edges;
+            console.log(faces)
+
+            return faces;
         }
 
     };
@@ -93,6 +106,12 @@ An implementation of Dwyer's O(nlogn) Delaunay triangulation algorithm
      * Return true is d is in the circumcircle of a, b, c
      */
     function inCircle(a, b, c, d){
+
+        if((a[0] === d[0] && a[1] === d[1])
+            || (b[0] === d[0] && b[1] === d[1])
+            || (c[0] === d[0] && c[1] === d[1]))
+            return false;
+
         var sa = a[0] * a[0] + a[1] * a[1],
             sb = b[0] * b[0] + b[1] * b[1],
             sc = c[0] * c[0] + c[1] * c[1],

@@ -1,0 +1,45 @@
+{
+  "name": "delaunay-triangulation",
+  "version": "1.0.0",
+  "description": "A divide-and-conquer O(nlogn) routine for Delaunay triangulation",
+  "homepage": "https://github.com/Bathlamos/delaunay-triangulation",
+  "keywords": [
+    "delaunay",
+    "triangulation",
+    "mesh",
+    "O(nlogn)"
+  ],
+  "author": "Philippe Legault",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Bathlamos/delaunay-triangulation.git"
+  },
+  "main": "delaunay.js",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "eslint": "^1.10.3",
+    "faucet": "0.0.1",
+    "istanbul": "~0.4.1",
+    "rtree": "~1.4.2",
+    "tape": "^4.0.0",
+    "delaunay-fast": "1.0.0",
+    "delaunay": "0.4.0",
+    "delaunay-triangulate": "1.1.6",
+    "incremental-delaunay": "1.0.2"
+  },
+  "scripts": {
+    "test": "eslint delaunary.js test/test.js && node test/test.js | faucet",
+    "perf": "node ./test/perf.js",
+    "cov": "istanbul cover test/test.js -x test/test.js"
+  },
+  "eslintConfig": {
+    "rules": {
+      "indent": 0,
+      "strict": 0,
+      "new-cap": 0
+    },
+    "env": {
+      "amd": true
+    }
+  }
+}
