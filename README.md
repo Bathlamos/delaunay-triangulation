@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Bathlamos/delaunay-triangulation.svg?branch=master)](https://travis-ci.org/Bathlamos/delaunay-triangulation)
+
 A quick Delaunay triangulation library in 2D. The library is based on Guibas & Stolfi's algorithm<sup>1</sup>, which guarantees a worst-case runtime of O(nlogn). To my knowledge, other JavaScript libraries out there do no have the same performance guarantee.
 
 The algorithm runs in the browser and on Node.js
