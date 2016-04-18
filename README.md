@@ -5,7 +5,7 @@ A quick Delaunay triangulation library in 2D. The library is based on Guibas & S
 The algorithm runs in the browser and on Node.js.
 
 ##Demo
-http://bathlamos.github.io/delaunay-triangulation/
+<a href="http://bathlamos.github.io/delaunay-triangulation/" target="_blank">http://bathlamos.github.io/delaunay-triangulation/</a>
 
 
 ## Usage
