@@ -72,7 +72,8 @@
 
                 // Output performance results to console and UI
                 var time = (end - start) / 1000.0;
-                $("#regenTime").text("Generated in " + time.toFixed(2) + "ms");
+                // Show the first two non-zero decimals
+                $("#regenTime").text("Generated in " + Math.max(0.000001, time.toFixed(Math.min(20,1-Math.floor(Math.log(time)/Math.log(10))))) + "s");
                 console.log("In time: " + (end - start) / 1000.0);
 
                 // Render the triangulation
