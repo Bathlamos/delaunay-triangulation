@@ -62,7 +62,7 @@ button {
     text-align: center;
     cursor: pointer;
     border-radius: 3px;
-    margin: 0 50px;
+    margin: 15px 50px;
 }
 
 button:hover, button:focus {
