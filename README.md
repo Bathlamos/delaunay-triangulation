@@ -2,7 +2,7 @@
 
 A quick Delaunay triangulation library in 2D. The library is based on Guibas & Stolfi's divide-and-conquer algorithm<sup>1</sup>, which guarantees a worst-case runtime of O(nlogn). To my knowledge, other JavaScript libraries out there do no have the same performance guarantee.
 
-The algorithm runs in the browser and on Node.js.
+The algorithm runs in the browser and on [Node.js](https://www.npmjs.com/package/faster-delaunay).
 
 ##Demo
 <a href="http://bathlamos.github.io/delaunay-triangulation/" target="_blank">http://bathlamos.github.io/delaunay-triangulation/</a>
