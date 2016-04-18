@@ -62,7 +62,7 @@
 
                 // Generate random points
                 var pts = [];
-                for (var i = Math.floor(numPoints); i >= 0; i--)
+                for (var i = Math.floor(numPoints); i > 0; i--)
                     // Multiply the points by a constant factor to avoid numerical imprecision
                     pts.push([(5 + Math.random() * (canvas.width - 10)) * 100, (5 + Math.random() * (canvas.height - 10)) * 100]);
 
