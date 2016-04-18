@@ -1,5 +1,5 @@
 {
-  "name": "delaunay-triangulation",
+  "name": "faster-delaunay",
   "version": "1.0.0",
   "description": "A divide-and-conquer O(nlogn) routine for Delaunay triangulation",
   "homepage": "https://github.com/Bathlamos/delaunay-triangulation",

@@ -69,8 +69,6 @@ An implementation of Guibas & Stolfi's O(nlogn) Delaunay triangulation algorithm
                 }
             } while(queueIndex < queue.length);
 
-            console.log(faces)
-
             return faces;
         }
 
