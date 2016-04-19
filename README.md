@@ -34,6 +34,14 @@ var triangles = delaunay.triangulate();
    #3: [1.5,0], [0,10], [0,1]
 */
 ```
+## Performance
+The current library (faster-delaunay) compared to principal competitors with different data distributions (lower scores are better). 
+
+<img src="https://raw.githubusercontent.com/Bathlamos/delaunay-triangulation/master/wiki/UniformDistribution.PNG" alt="Performance against other JS libraries" >
+
+<img src="https://raw.githubusercontent.com/Bathlamos/delaunay-triangulation/master/wiki/GridDistribution.PNG" alt="Performance against other JS libraries" >
+
+<img src="https://raw.githubusercontent.com/Bathlamos/delaunay-triangulation/master/wiki/MultivariateNormalDistribution.PNG" alt="Performance against other JS libraries" >
 
 ## Accuracy
 Due to all JavaScript numbers being 64-bit floating points, certain mathematical operations may misbehave if the points are too close to one another. If two points are closer than 0.01 on either axis, simply multiply all points by a constant factor.
