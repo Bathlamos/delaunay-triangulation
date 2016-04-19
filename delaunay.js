@@ -1,8 +1,7 @@
 /*
  (c) 2016, Philippe Legault
-An implementation of Guibas & Stolfi's O(nlogn) Delaunay triangulation algorithm
+ An implementation of Guibas & Stolfi's O(nlogn) Delaunay triangulation algorithm
  https://github.com/Bathlamos/delaunay-triangulation
-
  */
 
 (function () {

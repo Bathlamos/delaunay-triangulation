@@ -7,7 +7,11 @@
     "delaunay",
     "triangulation",
     "mesh",
-    "O(nlogn)"
+    "O(nlogn)",
+    "fast",
+    "divide-and-conquer",
+    "guibas",
+    "stolfi"
   ],
   "author": "Philippe Legault",
   "repository": {
@@ -20,7 +24,6 @@
     "eslint": "^1.10.3",
     "faucet": "0.0.1",
     "istanbul": "~0.4.1",
-    "rtree": "~1.4.2",
     "tape": "^4.0.0",
     "delaunay-fast": "1.0.0",
     "delaunay": "0.4.0",

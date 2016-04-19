@@ -4,7 +4,7 @@ A quick Delaunay triangulation library in 2D. The library is based on Guibas & S
 
 The algorithm runs in the browser and on [Node.js](https://www.npmjs.com/package/faster-delaunay).
 
-##Demo
+## Demo
 <a href="http://bathlamos.github.io/delaunay-triangulation/" target="_blank">http://bathlamos.github.io/delaunay-triangulation/</a>
 
 
@@ -35,11 +35,11 @@ var triangles = delaunay.triangulate();
 */
 ```
 
-##Accuracy
+## Accuracy
 Due to all JavaScript numbers being 64-bit floating points, certain mathematical operations may misbehave if the points are too close to one another. If two points are closer than 0.01 on either axis, simply multiply all points by a constant factor.
 
 - Performance against other algorithms
-- Node.js link
+- add perimeter and single edges to Delaunay result
 
 [1] [L.J. Guibas and J. Stolfi, Primitives for the manipulation of general subdivisions and the
 computation of Voronoi diagrams, ACM Trans. Graphics, 4 (1985), 74-123.](http://dl.acm.org/citation.cfm?id=282923)
